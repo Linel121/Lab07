@@ -40,9 +40,7 @@ CREATE TABLE `usuario` (
   `contraseña` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `usuario`
---
+
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `edad`, `DNI`, `numero`, `correo`, `administrador`, `nombre_usuario`, `contraseña`) VALUES
 (1, 'Paulo', 'Garcia', 18, 72428560, 906740999, 'Paulo.garfar@gmail.com', 1, 'paulozzq', '123'),
@@ -53,27 +51,12 @@ INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `edad`, `DNI`, `numero`, `cor
 (6, 'Laura', 'Hernández', 35, 2147483647, 369258147, 'laura@example.com', 0, 'laurahernandez', 'contraseña5'),
 (7, 'David', 'Sánchez', 40, 1593572460, 159357246, 'david@example.com', 0, 'davidsanchez', 'contraseña6');
 
---
--- Índices para tablas volcadas
---
 
---
--- Indices de la tabla `usuario`
---
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
 
---
--- AUTO_INCREMENT de la tabla `usuario`
---
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

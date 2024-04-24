@@ -5,7 +5,7 @@ if(empty($_SESSION['usuario'])) {
     exit;
 }
 
-if(isset($_POST['salir'])){
+elseif(isset($_POST['salir'])){
     session_destroy();
     header("Location: index.html");
     exit;
@@ -23,11 +23,12 @@ if(isset($_POST['salir'])){
     <div class="container">
         <h1 class="mt-5">Menú de Acciones</h1>
         <div class="d-flex justify-content-between align-items-center mt-3">
-            <form action="" method="post" class="mr-3">
+            <form action="eliminar.php" method="post" class="mr-3">
                 <div class="form-group">
                     <label for="accion">Selecciona una acción:</label>
                     <select class="form-control" id="accion" name="accion">
-                        <option value="crear">Crear</option>
+                      <form action="eliminar.php" method="post">
+                        <option value="crear">Crear</option></form>
                         <option value="editar">Editar</option>
                         <option value="eliminar">Eliminar</option>
                     </select>
@@ -40,4 +41,7 @@ if(isset($_POST['salir'])){
         </div>
     </div>
 </body>
+
+
+
 </html>
