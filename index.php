@@ -18,6 +18,7 @@ if(isset($_POST['Enviar'])) {
         $correcto = false;
     }
     if($correcto) {
+        $_SESSION['id'] = $resultado['id'];
         $_SESSION['usuario'] = $usuario;
         $_SESSION['contraseña'] = $hashed_password;
         $_SESSION['nombre'] = $resultado['nombre'];
