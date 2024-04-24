@@ -32,64 +32,65 @@ if (isset($_POST['editar'])) {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Editar Registro</title>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-            <style>
-                .mensaje {
-                    margin-top: 20px;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h2>Editar registro</h2>
-                <form action="" method="post">
-                        <div class="form-group">
-                            <label for="nombre_u">Nombre de usuario:</label>
-                            <input type="text" class="form-control" id="nombre_u" name="usuario" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="apellido">Apellido:</label>
-                            <input type="text" class="form-control" id="apellido" name="apellido" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="numero">Número:</label>
-                            <input type="text" class="form-control" id="numero" name="numero" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="edad">Edad:</label>
-                            <input type="number" class="form-control" id="edad" name="edad" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="dni">DNI:</label>
-                            <input type="text" class="form-control" id="dni" name="dni" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="correo">Correo:</label>
-                            <input type="email" class="form-control" id="correo" name="correo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contraseña">Contraseña:</label>
-                            <input type="password" class="form-control" id="password" name="pass" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="administrador">Rol:</label>
-                            <select class="form-control" id="administrador" name="administrador">
-                                <option value="1">Admin</option>
-                                <option value="0">User</option>
-                            </select>
-                </div>
-                <button type="submit" class="btn btn-sm btn-danger" name="editar" onclick="return confirm('¿Estás seguro de que deseas editar este registro?')">Editar</button>
-                </form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Registro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .mensaje {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Editar registro</h2>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="nombre_u">Nombre de usuario:</label>
+                <input type="text" class="form-control" id="nombre_u" name="usuario" required>
             </div>
-        </body>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-z]+" title="Ingrese solo letras" required>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" pattern="[A-Za-z]+" title="Ingrese solo letras" required>
+            </div>
+            <div class="form-group">
+                <label for="numero">Número:</label>
+                <input type="text" class="form-control" id="numero" name="numero" pattern="[0-9]+" title="Ingrese solo números" required>
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad:</label>
+                <input type="number" class="form-control" id="edad" name="edad" required>
+            </div>
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" class="form-control" id="dni" name="dni" pattern="[0-9]{8}" title="Ingrese un DNI válido de 8 dígitos" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" class="form-control" id="correo" name="correo" required>
+            </div>
+            <div class="form-group">
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" class="form-control" id="password" name="pass" required>
+            </div>
+            <div class="form-group">
+                <label for="administrador">Rol:</label>
+                <select class="form-control" id="administrador" name="administrador">
+                    <option value="1">Admin</option>
+                    <option value="0">User</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-sm btn-danger" name="editar" onclick="return confirm('¿Estás seguro de que deseas editar este registro?')">Editar</button>
+        </form>
+    </div>
+</body>
 </html>
