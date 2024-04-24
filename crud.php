@@ -218,49 +218,154 @@ $registros = $sql->fetchAll(PDO::FETCH_ASSOC);
         <?php
             if ($accion == 'crear'){
             ?>
-                <div class="container">
-                    <h2>Crear Nuevo Registro</h2>
-                    <form action="?accion=crear" method="post">
-                        <div class="form-group">
-                            <label for="nombre_u">Nombre de usuario:</label>
-                            <input type="text" class="form-control" id="nombre_u" name="usuario" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="apellido">Apellido:</label>
-                            <input type="text" class="form-control" id="apellido" name="apellido" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="numero">Número:</label>
-                            <input type="text" class="form-control" id="numero" name="numero" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="edad">Edad:</label>
-                            <input type="number" class="form-control" id="edad" name="edad" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="dni">DNI:</label>
-                            <input type="text" class="form-control" id="dni" name="dni" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="correo">Correo:</label>
-                            <input type="email" class="form-control" id="correo" name="correo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contraseña">Contraseña:</label>
-                            <input type="password" class="form-control" id="password" name="pass" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="administrador">Rol:</label>
-                            <select class="form-control" id="administrador" name="administrador">
-                                <option value="1">Admin</option>
-                                <option value="0">User</option>
-                            </select>
-                </div>
-                <button type="submit" class="btn btn-sm btn-danger" name="crear" onclick="return confirm('¿Estás seguro de que deseas crear este registro?')">Crear</button>
+                <form action="?accion=crear" method="post">
+    <div class="form-group">
+        <label for="nombre_u">Nombre de usuario:</label>
+        <input type="text" class="form-control" id="nombre_u" name="usuario" required>
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="apellido">Apellido:</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" required>
+    </div>
+    <div class="form-group">
+        <label for="numero">Número:</label>
+        <input type="text" class="form-control" id="numero" name="numero" required>
+    </div>
+    <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input type="number" class="form-control" id="edad" name="edad" required>
+    </div>
+    <div class="form-group">
+        <label for="dni">DNI:</label>
+        <input type="text" class="form-control" id="dni" name="dni" required>
+    </div>
+    <div class="form-group">
+        <label for="correo">Correo:</label>
+        <input type="email" class="form-control" id="correo" name="correo" required>
+    </div>
+    <div class="form-group">
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" class="form-control" id="password" name="pass" required>
+    </div>
+    <div class="form-group">
+        <label for="administrador">Rol:</label>
+        <select class="form-control" id="administrador" name="administrador">
+            <option value="1">Admin</option>
+            <option value="0">User</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+<script>
+    // Validación para nombre de usuario
+    document.getElementById('nombre_u').addEventListener('input', function() {
+        var username = this.value.trim();
+        var regex = /^[a-zA-Z0-9_-]+$/;
+        var isValid = regex.test(username);
+        var feedback = document.getElementById('usernameHelpBlock');
+        var inputField = this;
+        
+        if (isValid) {
+            inputField.classList.remove('is-invalid');
+            feedback.innerText = 'Se permiten letras, números, _ y -';
+        } else {
+            inputField.classList.add('is-invalid');
+            feedback.innerText = 'Por favor, ingrese un nombre de usuario válido.';
+        }
+    });
+    document.getElementById('nombre').addEventListener('input', function() {
+            var name = this.value.trim();
+            var regex = /^[a-zA-Z\s]*$/;
+            var isValid = regex.test(name);
+            var inputField = this;
+            
+            if (isValid) {
+                inputField.classList.remove('is-invalid');
+            } else {
+                inputField.classList.add('is-invalid');
+            }
+        });
+        document.getElementById('apellido').addEventListener('input', function() {
+            var apellido = this.value.trim();
+            var regex = /^[a-zA-Z\s]*$/;
+            var isValid = regex.test(apellido);
+            var inputField = this;
+            
+            if (isValid) {
+                inputField.classList.remove('is-invalid');
+            } else {
+                inputField.classList.add('is-invalid');
+            }
+        });
+        document.getElementById('numero').addEventListener('input', function() {
+            var numero = this.value.trim();
+            var regex = /^\d{9}$/;
+            var isValid = regex.test(numero);
+            var inputField = this;
+            
+            if (isValid) {
+                inputField.classList.remove('is-invalid');
+            } else {
+                inputField.classList.add('is-invalid');
+            }
+        });
+        document.getElementById('edad').addEventListener('input', function() {
+            var edad = parseInt(this.value.trim());
+            var edadError = document.getElementById('edadError');
+            
+            if (isNaN(edad) || edad < 0 || edad > 999) {
+                edadError.textContent = 'La edad debe ser un número positivo de hasta 3 dígitos.';
+                this.classList.add('is-invalid');
+            } else {
+                edadError.textContent = '';
+                this.classList.remove('is-invalid');
+            }
+        });
+        document.getElementById('dni').addEventListener('input', function() {
+            var dni = this.value.trim();
+            var dniError = document.getElementById('dniError');
+            
+
+            if (!(/^\d+$/.test(dni)) || parseInt(dni) < 0) {
+                dniError.textContent = 'El DNI debe contener solo números y no puede ser negativo.';
+                this.classList.add('is-invalid');
+            } else {
+                dniError.textContent = '';
+                this.classList.remove('is-invalid');
+            }
+        });
+        document.getElementById('correo').addEventListener('input', function() {
+            var correo = this.value.trim();
+            var correoError = document.getElementById('correoError');
+            
+            if (correo.length > 8) {
+                correoError.textContent = 'El correo no puede tener más de 8 caracteres.';
+                this.classList.add('is-invalid');
+            } else {
+                correoError.textContent = '';
+                this.classList.remove('is-invalid');
+            }
+        });
+        document.getElementById('password').addEventListener('input', function() {
+            var password = this.value.trim();
+            var passError = document.getElementById('passError');
+            
+            if (password.length > 8) {
+                passError.textContent = 'La contraseña no puede tener más de 8 caracteres.';
+                this.classList.add('is-invalid');
+            } else {
+                passError.textContent = '';
+                this.classList.remove('is-invalid');
+            }
+        });
+</script>
+
+                <button type="submit" class="btn btn-sm btn-danger" name="crear" onclick="return confirm('¿Estás seguro de que deseas crear este registro?')">Crear</button> <br>
         </form>
         <?php
         }
