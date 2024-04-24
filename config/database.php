@@ -1,7 +1,7 @@
 <?php
 class Database{
     private $hostname='localhost';
-    private $database='llab07';
+    private $database='lab07';
     private $username='root';
     private $password='';
     private $pdo; // Propiedad para almacenar la instancia de PDO
