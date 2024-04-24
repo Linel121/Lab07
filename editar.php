@@ -7,6 +7,7 @@ if (empty($_SESSION['usuario'])) {
     header("Location: index.html");
     exit;
 }
+$registro = [];
 if (isset($_POST['editar_id'])) {
     $id = $_POST['editar_id'];
     $query = $con->prepare("SELECT * FROM usuario WHERE id = ?");
@@ -49,37 +50,38 @@ if (isset($_POST['editar'])) {
             <div class="container">
                 <h2>Editar registro</h2>
                 <form action="" method="post">
+                        <input type="hidden" name="editar_id" value="<?php echo isset($registro['id']) ? $registro['id'] : ''; ?>">
                         <div class="form-group">
                             <label for="nombre_u">Nombre de usuario:</label>
-                            <input type="text" class="form-control" id="nombre_u" name="usuario" required>
+                            <input type="text" class="form-control" id="nombre_u" name="usuario" value="<?php echo $registro['nombre_usuario']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $registro['nombre']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="apellido">Apellido:</label>
-                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+                            <input type="text" class="form-control" id="apellido" name="apellido" value="<?php echo $registro['apellido']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="numero">Número:</label>
-                            <input type="text" class="form-control" id="numero" name="numero" required>
+                            <input type="text" class="form-control" id="numero" name="numero" value="<?php echo $registro['numero']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="edad">Edad:</label>
-                            <input type="number" class="form-control" id="edad" name="edad" required>
+                            <input type="number" class="form-control" id="edad" name="edad" value="<?php echo $registro['edad']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="dni">DNI:</label>
-                            <input type="text" class="form-control" id="dni" name="dni" required>
+                            <input type="text" class="form-control" id="dni" name="dni" value="<?php echo $registro['DNI']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo:</label>
-                            <input type="email" class="form-control" id="correo" name="correo" required>
+                            <input type="email" class="form-control" id="correo" name="correo" value="<?php echo $registro['correo']; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="contraseña">Contraseña:</label>
-                            <input type="password" class="form-control" id="password" name="pass" required>
+                            <input type="password" class="form-control" id="password" name="pass"  required>
                         </div>
                         <div class="form-group">
                             <label for="administrador">Rol:</label>
